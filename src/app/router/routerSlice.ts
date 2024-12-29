@@ -1,9 +1,9 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
-import { Routes, RouterState } from './types'
-import { RootState } from '../../app/redux'
+import { Routes, RouterState, routes } from './types'
+import { RootState } from '../redux'
 
 const initialState: RouterState = {
-  route: Routes.home,
+  route: routes.home,
 }
 
 const routerSlice = createSlice({
@@ -20,4 +20,4 @@ export const { setRoute } = routerSlice.actions
 
 export const selectRoute = (state: RootState) => state.routes.route
 
-export default routerSlice.reducer
+export const routerReducer = routerSlice.reducer
