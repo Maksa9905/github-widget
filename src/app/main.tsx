@@ -1,16 +1,9 @@
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
-import { ThemeWrapper } from './styles'
-import { Router } from './router'
-import { Provider } from 'react-redux'
-import { store } from './redux'
+import { GitHubWidget } from '#app/gitHubWidget'
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
-    <ThemeWrapper>
-      <Provider store={store}>
-        <Router />
-      </Provider>
-    </ThemeWrapper>
+    <GitHubWidget token="123" />
   </StrictMode>,
 )

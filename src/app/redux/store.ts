@@ -1,9 +1,11 @@
 import { configureStore } from '@reduxjs/toolkit'
-import routesReducer from '#shared/router/index.ts'
+import { routerReducer } from '#app/router'
+import { gitHubWidgetReducer } from '#app/gitHubWidget'
 
 export const store = configureStore({
   reducer: {
-    routes: routesReducer,
+    gitHubWidget: gitHubWidgetReducer,
+    routes: routerReducer,
   },
 })
 
