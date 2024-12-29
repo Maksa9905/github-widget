@@ -4,10 +4,10 @@ export interface GitHubWidgetProps<
   WithDefaultTheme extends ThemeType | undefined,
 > {
   token: string
+  defaultThemeType?: WithDefaultTheme
   theme?: WithDefaultTheme extends undefined
     ? GitHubWidgetColorTheme
     : undefined
-  defaultThemeType?: WithDefaultTheme
   width?: number
   translation?: Language
 }

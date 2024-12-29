@@ -1,3 +1,5 @@
 {
-    "helloWorld": "Привет, мир!"
+    "repositories": "Репозитории",
+    "followers": "Подписчики",
+    "stars": "Звезды"
 }
