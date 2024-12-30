@@ -1,12 +1,8 @@
 import { GitHubWidgetColorTheme } from '#app/theme.ts'
+import { FireIcon, GitHubIcon } from '#shared/ui'
 import styled from 'styled-components'
 
 export const PageContainer = styled('div')<{ $theme: GitHubWidgetColorTheme }>`
-  display: grid;
-  grid-template-columns: auto auto 1fr;
-  grid-template-rows: auto;
-  gap: 16px;
-  padding: 16px;
   background-color: ${({ $theme }) => $theme.background.backgroundColor};
   border-radius: 5px;
   height: 124px;
@@ -25,14 +21,16 @@ export const GitHubIconContainer = styled('div')`
   justify-content: center;
 `
 
-export const InfoContainer = styled('div')`
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
+export const FireIconContainer = styled('div')`
+  position: absolute;
+  top: 6px;
+  right: 6px;
 `
 
-export const NickNameTitle = styled('h1')<{ $theme: GitHubWidgetColorTheme }>`
-  font-size: 16px;
-  font-weight: normal;
-  color: ${({ $theme }) => $theme.text.nameColor};
+export const LoadingFireIcon = styled(FireIcon)`
+  transition: all 1s ease-in-out;
+`
+
+export const LoadingGitHubIcon = styled(GitHubIcon)`
+  transition: all 1s ease-in-out;
 `

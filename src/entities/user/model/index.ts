@@ -1,1 +1,1 @@
-export * from './useGetFireColor'
+export * from '../lib/useGetFireColor'

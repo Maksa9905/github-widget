@@ -6,7 +6,7 @@ import { ThemeType } from './theme'
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
     <GitHubWidget
-      token="123"
+      token={import.meta.env.VITE_GITHUB_ACCESS_TOKEN}
       defaultThemeType={ThemeType.dark}
     />
   </StrictMode>,

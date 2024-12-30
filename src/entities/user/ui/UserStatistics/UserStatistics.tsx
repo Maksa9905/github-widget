@@ -4,21 +4,13 @@ import { FollowerIcon, RepositoryIcon, StarIcon } from '#shared/ui'
 import { useTranslation } from 'react-i18next'
 import { StatisticLabel } from './StatisticLabel'
 import { StatisticsList, StatisticsListItem } from './StyledUserStatistics'
+import { useGetUserQuery } from '#entities/user'
 
-export interface UserStatisticsProps {
-  repositories: number
-  followers: number
-  stars: number
-}
-
-export const UserStatistics = ({
-  repositories,
-  followers,
-  stars,
-}: UserStatisticsProps) => {
+export const UserStatistics = () => {
   const { t } = useTranslation()
 
   const theme = useAppSelector(selectTheme)
+  const { data: userData } = useGetUserQuery()
 
   return (
     <StatisticsList $theme={theme}>
@@ -26,7 +18,7 @@ export const UserStatistics = ({
         $theme={theme}
         label={
           <StatisticLabel
-            value={String(followers)}
+            value={String(userData?.followersCount || 0)}
             label={t('followers')}
           />
         }
@@ -36,7 +28,7 @@ export const UserStatistics = ({
         $theme={theme}
         label={
           <StatisticLabel
-            value={String(repositories)}
+            value={String(userData?.repositoriesCount || 0)}
             label={t('repositories')}
           />
         }
@@ -46,7 +38,7 @@ export const UserStatistics = ({
         $theme={theme}
         label={
           <StatisticLabel
-            value={String(stars)}
+            value={String(userData?.starsCount || 0)}
             label={t('stars')}
           />
         }

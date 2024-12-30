@@ -1,49 +1,34 @@
 import { selectTheme } from '#app/gitHubWidget'
-import { useGetFireColor, UserStatistics } from '#entities/user/index.ts'
+import { useGetUserQuery, UserAvatar, UserStatistics } from '#entities/user'
+import { FireComboIndicator } from '#entities/user'
 import { useAppSelector } from '#shared/hooks'
-import { FireIcon, GitHubIcon } from '#shared/ui'
+import { GitHubIcon } from '#shared/ui'
+import { LoadingPage } from '../LoadingPage'
 import {
-  FireIconContainer,
   GitHubIconContainer,
-  Image,
   InfoContainer,
   NickNameTitle,
   PageContainer,
-  StyledTooltip,
 } from './StyledHomePage'
 
 export const HomePage = () => {
   const theme = useAppSelector(selectTheme)
 
-  const comboDays = 89
+  const { data: userData, isLoading } = useGetUserQuery()
 
-  const fireColor = useGetFireColor(comboDays)
+  if (isLoading) return <LoadingPage />
 
   return (
     <PageContainer $theme={theme}>
-      <Image src={'https://avatars.githubusercontent.com/u/149005625?v=4'} />
+      <UserAvatar />
       <InfoContainer>
-        <NickNameTitle $theme={theme}>Maksim Gaivoronskiy</NickNameTitle>
-        <UserStatistics
-          repositories={23}
-          followers={236}
-          stars={25}
-        />
+        <NickNameTitle $theme={theme}>{userData?.userName}</NickNameTitle>
+        <UserStatistics />
       </InfoContainer>
-      <FireIconContainer id="fire-icon-container">
-        <FireIcon color={fireColor} />
-      </FireIconContainer>
+      <FireComboIndicator />
       <GitHubIconContainer>
         <GitHubIcon color={theme.background.backgroundIconColor} />
       </GitHubIconContainer>
-      <StyledTooltip
-        anchorSelect={'#fire-icon-container'}
-        $theme={theme}
-        clickable
-        place={'top-start'}
-      >
-        <b style={{ color: fireColor }}>{comboDays}</b> contributions days combo
-      </StyledTooltip>
     </PageContainer>
   )
 }
