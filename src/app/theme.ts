@@ -12,6 +12,7 @@ export interface GitHubWidgetColorTheme {
     textColor: string
   }
   comboIndicator: string[]
+  loaderColor: string
 }
 
 export enum ThemeType {
@@ -33,6 +34,7 @@ export const defaultLightTheme: GitHubWidgetColorTheme = {
     textColor: '#000000',
   },
   comboIndicator: ['#04ff00', '#ffd900', '#ff0000'],
+  loaderColor: '#eeeeee',
 }
 
 export const defaultDarkTheme: GitHubWidgetColorTheme = {
@@ -49,6 +51,7 @@ export const defaultDarkTheme: GitHubWidgetColorTheme = {
     textColor: '#ffffff',
   },
   comboIndicator: ['#04ff00', '#ffd900', '#ff0000'],
+  loaderColor: '#2d2d2d',
 }
 
 export const defaultThemes: Record<ThemeType, GitHubWidgetColorTheme> = {
